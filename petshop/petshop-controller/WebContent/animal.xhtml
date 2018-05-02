@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<title>JSF Animal page</title>
+	<style type="text/css">
+.tg {
+	border-collapse: collapse;
+	border-spacing: 0;
+	border-color: #ccc;
+}
+
+.tg td {
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	padding: 10px 5px;
+	border-style: solid;
+	border-width: 1px;
+	overflow: hidden;
+	word-break: normal;
+	border-color: #ccc;
+	color: #333;
+	background-color: #fff;
+}
+
+.tg th {
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	padding: 10px 5px;
+	border-style: solid;
+	border-width: 1px;
+	overflow: hidden;
+	word-break: normal;
+	border-color: #ccc;
+	color: #333;
+	background-color: #f0f0f0;
+}
+
+.tg .tg-4eph {
+	background-color: #f9f9f9
+}
+</style>
+</h:head>
+<h:body>
+	<h1>Add a new Animal</h1>
+	<h:form>
+
+		<p:panel header="New animal form">
+			<p:messages />
+
+			<h:panelGrid columns="4" cellpadding="5">
+
+				<h:outputLabel for="name" value="Name:" />
+				<p:inputText id="name" value="#{animalBean.animalInfo.name}"
+					label="Name" />
+				<p:message for="name" />
+				<h:outputText value="#{animalBean.animalInfo.name}" />
+
+				<h:outputLabel for="age" value="Age:" />
+				<p:inputText id="age" value="#{animalBean.animalInfo.age}"
+					label="Age" />
+				<p:message for="age" />
+				<h:outputText value="#{animalBean.animalInfo.age}" />
+
+				<h:outputLabel for="vaccination" value="Vaccination:" />
+				<p:selectBooleanCheckbox id="checked"
+					value="#{animalBean.animalInfo.vaccination}" />
+				<p:message for="checked" />
+				<h:outputText />
+
+
+			</h:panelGrid>
+
+			<p:commandButton value="Save" ajax="false" icon="ui-icon-check"
+				validateClient="true" />
+		</p:panel>
+	</h:form>
+
+</h:body>
+</html>

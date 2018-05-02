@@ -1,0 +1,48 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<script name="jquery/jquery.js" library="primefaces"></script>
+</h:head>
+<h:form style="width:500px;">
+
+	<p:growl id="msgs" showDetail="true" />
+
+	<h3 style="margin-top: 0">Welcom page petshop</h3>
+	<p:tabView>
+		<p:tab title="Animals">
+			<h:panelGrid columns="2" cellpadding="10">
+
+				<p:dataTable var="animal" value="#{animalBean.animals}"
+					stickyHeader="true"> -->
+					<p:column headerText="Id">
+						<h:outputText value="#{animal.id}" />
+					</p:column>
+					<p:column headerText="variaty">
+						<h:outputText value="#{animal.type.variety}" />
+					</p:column>
+				</p:dataTable>
+
+			</h:panelGrid>
+		</p:tab>
+		<p:tab title="Products">
+			<h:panelGrid columns="2" cellpadding="10">
+
+				<p:dataTable var="product" value="#{productBean.product}"
+					stickyHeader="true"> -->
+					<p:column headerText="name">
+						<h:outputText value="#{product.name}" />
+					</p:column>
+					<p:column headerText="producer">
+						<h:outputText value="#{product}" />
+					</p:column>
+				</p:dataTable>
+
+			</h:panelGrid>
+		</p:tab>
+	</p:tabView>
+
+</h:form>
+</html>
