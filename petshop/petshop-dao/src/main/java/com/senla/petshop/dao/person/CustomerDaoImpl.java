@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.senla.petshop.api.dao.person.CustomerDao;
 import com.senla.petshop.dao.AbstractDaoImpl;
+import com.senla.petshop.model.goods.Order;
 import com.senla.petshop.model.person.Address;
 import com.senla.petshop.model.person.Authenticator;
 import com.senla.petshop.model.person.Customer;
@@ -25,6 +26,15 @@ public class CustomerDaoImpl extends AbstractDaoImpl<Customer> implements Custom
 
 	public CustomerDaoImpl() {
 		super(Customer.class);
+	}
+
+	@Override
+	public List<Customer> customerWithOrder() {
+		CriteriaBuilder builder = getSession().getCriteriaBuilder();
+		CriteriaQuery<Customer> query = builder.createQuery(Customer.class);
+		Root<Customer> root = query.from(Customer.class);
+		Fetch<Customer, Order> customerOrder = root.fetch("customer");
+		return getSession().createQuery(query).getResultList();
 	}
 
 	@Override

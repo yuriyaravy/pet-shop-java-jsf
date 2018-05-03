@@ -77,6 +77,9 @@ public class ProductBean implements Serializable {
 	}
 
 	public ProductDetail getProductDetail() {
+		if (productDetail == null) {
+			productDetail = new ProductDetail();
+		}
 		return productDetail;
 	}
 
@@ -92,13 +95,10 @@ public class ProductBean implements Serializable {
 		this.products = products;
 	}
 
-	public void persistProduct(ProductDetail productDetail, Address address) {
-		System.out.println("---------------------Poroduct-----------------------------");
-		detailService.persistProductDetail(productDetail);
-		addressService.persistAddress(address);
+	public void persistProduct() {
 		Product product = new Product();
-		productDetail.setAddress(address);
-		product.setProductDetail(productDetail);
+		this.productDetail.setAddress(this.adress);
+		product.setProductDetail(this.productDetail);
 		productService.persistProduct(product);
 	}
 

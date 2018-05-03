@@ -8,4 +8,6 @@ public interface AuthenticatorService {
 
 	Integer getAuthenticatorId(String login, String password);
 
+	void persistAuthenticator(Authenticator authen);
+
 }

@@ -18,4 +18,6 @@ public interface CustomerService {
 
 	List<Customer> getCustomer();
 
+	List<Customer> customerWithOrder();
+
 }

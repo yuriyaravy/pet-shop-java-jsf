@@ -17,4 +17,6 @@ public interface OrderDao extends GenericDao<Order> {
 
 	List<Order> getCompleted();
 
+	List<Order> orderWithCustomer();
+
 }

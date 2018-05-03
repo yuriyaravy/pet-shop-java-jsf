@@ -6,27 +6,29 @@ import com.senla.petshop.model.person.Customer;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 
-@ManagedBean(name = "customer")
+@ManagedBean(name = "customerBean")
 @RequestScoped
 public class CustomerBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@ManagedProperty("#{customerServise}")
+	@ManagedProperty("#{customerService}")
 	private CustomerService customerService;
 
 	private Customer customer;
 	private List<Customer> customerList;
 
+	@PostConstruct
+	public void init() {
+		customerList = customerService.customerWithOrder();
+	}
+
 	public Customer getCustomer() {
-		if (customer == null) {
-			int id = 1;
-			customer = customerService.getCustomerById(id);
-		}
 		return customer;
 	}
 
@@ -35,9 +37,6 @@ public class CustomerBean implements Serializable {
 	}
 
 	public List<Customer> getCustomerList() {
-		if (customerList == null) {
-			customerList = customerService.getCustomer();
-		}
 		return customerList;
 	}
 

@@ -3,46 +3,76 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
+
 <h:head>
-	<script name="jquery/jquery.js" library="primefaces"></script>
+	<title>Welcom</title>
 </h:head>
-<h:form style="width:500px;">
+<p:layout fullPage="true">
 
-	<p:growl id="msgs" showDetail="true" />
+	<p:layoutUnit position="north" size="100" resizable="true"
+		closable="false" collapsible="false">
+		<h:outputText value="North unit content." />
+		//logo
+	</p:layoutUnit>
 
-	<h3 style="margin-top: 0">Welcom page petshop</h3>
-	<p:tabView>
-		<p:tab title="Animals">
-			<h:panelGrid columns="2" cellpadding="10">
 
-				<p:dataTable var="animal" value="#{animalBean.animals}"
-					stickyHeader="true"> -->
-					<p:column headerText="Id">
-						<h:outputText value="#{animal.id}" />
-					</p:column>
-					<p:column headerText="variaty">
-						<h:outputText value="#{animal.type.variety}" />
-					</p:column>
-				</p:dataTable>
-
+	<p:layoutUnit position="west" size="170" header="Menu" resizable="true"
+		closable="true" collapsible="true">
+		<h:form>
+			<h:panelGrid frame="lhs" columns="1" cellpadding="3">
+				<h:commandButton action="registration" value="Registration" />
+				<h:commandButton action="login" value="Login" />
+				<h:commandButton action="customer" value="Customer" />
+				<h:commandButton action="admin" value="Admin" />
 			</h:panelGrid>
-		</p:tab>
-		<p:tab title="Products">
-			<h:panelGrid columns="2" cellpadding="10">
+		</h:form>
+	</p:layoutUnit>
 
-				<p:dataTable var="product" value="#{productBean.product}"
-					stickyHeader="true"> -->
-					<p:column headerText="name">
-						<h:outputText value="#{product.name}" />
-					</p:column>
-					<p:column headerText="producer">
-						<h:outputText value="#{product}" />
-					</p:column>
-				</p:dataTable>
+	<p:layoutUnit position="center">
+     //advertising
+     <p:tabView>
+			<p:tab title="Animals">
+				<h:panelGrid columns="2" cellpadding="5">
 
-			</h:panelGrid>
-		</p:tab>
-	</p:tabView>
+					<p:dataTable var="animal" value="#{animalBean.animals}">
+						<p:column headerText="Id">
+							<h:outputText value="#{animal.id}" />
+						</p:column>
+						<p:column headerText="variaty">
+							<h:outputText value="#{animal.type.variety}" />
+						</p:column>
+						<p:column headerText="age">
+							<h:outputText value="#{animal.info.age}" />
+						</p:column>
+						<p:column headerText="vaccination">
+							<h:outputText value="#{animal.info.vaccination}" />
+						</p:column>
+						<p:column headerText="weight">
+							<h:outputText value="#{animal.info.weight}" />
+						</p:column>
+						<p:column headerText="sex">
+							<h:outputText value="#{animal.info.sex}" />
+						</p:column>
+					</p:dataTable>
+				</h:panelGrid>
+			</p:tab>
 
-</h:form>
+			<p:tab title="Products">
+				<h:panelGrid columns="2" cellpadding="5">
+					<p:dataTable var="product" value="#{productBean.product}">
+						<p:column headerText="name">
+							<h:outputText value="#{product.name}" />
+						</p:column>
+						<p:column headerText="producer">
+							<h:outputText value="#{product.productDetail.name}" />
+						</p:column>
+					</p:dataTable>
+				</h:panelGrid>
+			</p:tab>
+		</p:tabView>
+
+	</p:layoutUnit>
+
+</p:layout>
+
 </html>

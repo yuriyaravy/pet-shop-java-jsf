@@ -2,11 +2,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>JSF Customer first</title>
+	<title>Customer page</title>
 	<style type="text/css">
 .tg {
 	border-collapse: collapse;
@@ -47,19 +49,85 @@
 </style>
 </h:head>
 <h:body>
-	<h2>User Details</h2>
-	<p>
-		<h:panelGrid columns="2">
-			<h:outputLabel value="ID" />
-			<h:outputText value="#{customerBean.customer.id}" />
+	<h:form id="form">
+		<p:tabView>
+			<p:tab title="List of yuor Animal">
+				<h:panelGrid columns="4" cellpadding="10">
+					<h:form>
+						<p:dataTable var="pet" value="#{customerBean.customer.pets}"
+							scrollable="true" scrollHeight="250">
+							<f:facet name="header">
+          						  Animla detailed information
+                     	   </f:facet>
+							<p:column style="width:16px">
+								<p:rowToggler />
+							</p:column>
+							<p:column headerText="Id">
+								<h:outputText value="#{pet.id}" />
+							</p:column>
+							<p:column headerText="Name of animal">
+								<h:outputText value="#{pet.name}" />
+							</p:column>
+							<p:column headerText="Vaccination">
+								<h:outputText value="#{pet.vaccination}" />
+							</p:column>
+							<p:column headerText="Sex of animal">
+								<h:outputText value="male" rendered="#{pet.sex}" />
+								<h:outputText value="female" rendered="#{not pet.sex}" />
+							</p:column>
 
-			<h:outputLabel value="First Name" />
-			<h:outputText value="#{customerBean.customer.name}" />
+							<p:rowExpansion>
+								<p:panelGrid columns="3" columnClasses="label,value"
+									style="width:300px">
+									<f:facet name="header">
+										<p:graphicImage value="place for foto" />
+									</f:facet>
 
-			<h:outputLabel value="Last Name" />
-			<h:outputText value="#{customerBean.customer.surname}" />
+									<h:outputText value="Id:" />
+									<h:outputText value="#{pet.id}" />
 
-		</h:panelGrid>
-	</p>
+									<h:outputText value="Year" />
+									<h:outputText value="#{pet.name}" />
+
+									<h:outputText value="Color:" />
+									<h:outputText value="#{pet.vaccination}" />
+
+								</p:panelGrid>
+							</p:rowExpansion>
+						</p:dataTable>
+					</h:form>
+				</h:panelGrid>
+			</p:tab>
+
+			<p:tab title="List of yuor Order">
+				<h:panelGrid columns="2" cellpadding="10">
+					<h:form>
+						<p:dataTable var="orders" value="#{orderBean.orders}"
+							scrollable="true" scrollHeight="250">
+							<f:facet name="header">
+          						  Order detailed information
+                     	   </f:facet>
+							<p:column style="width:16px">
+								<p:rowToggler />
+							</p:column>
+							<p:column headerText="Id">
+								<h:outputText value="#{orders.id}" />
+							</p:column>
+							<p:column headerText="Order of animal">
+								<h:outputText value="#{orders.animal.name}" />
+							</p:column>
+							<p:column headerText="Order of product">
+								<h:outputText value="#{orders.product.name}" />
+							</p:column>
+
+						</p:dataTable>
+					</h:form>
+				</h:panelGrid>
+			</p:tab>
+
+
+		</p:tabView>
+	</h:form>
+
 </h:body>
 </html>

@@ -1,4 +1,4 @@
-package com.senla.petshop.controller.person;
+package com.senla.petshop.controller.animal;
 
 import java.io.Serializable;
 import java.util.List;
@@ -39,6 +39,7 @@ public class AnimalBean implements Serializable {
 	@PostConstruct
 	public void init() {
 		amimalsInfo = animalInfoService.getAll();
+		// animals = animalService.getAnimalAndInfoAndType();
 	}
 
 	public List<AnimalInfo> getAmimalsInfo() {
@@ -106,13 +107,10 @@ public class AnimalBean implements Serializable {
 		this.animalType = animalType;
 	}
 
-	public void persistAnimal(AnimalInfo animalInfo, AnimalType animalType) {
-		System.out.println("------------------persistAnimal-------------------------");
-		animalTypeService.createAnimalType(animalType);
-		animalInfoService.createAnimalInfo(animalInfo);
+	public void persistAnimal() {
 		Animal animal = new Animal();
-		animal.setInfo(animalInfo);
-		animal.setType(animalType);
+		animal.setInfo(this.animalInfo);
+		animal.setType(this.animalType);
 		animalService.createAnimal(animal);
 	}
 

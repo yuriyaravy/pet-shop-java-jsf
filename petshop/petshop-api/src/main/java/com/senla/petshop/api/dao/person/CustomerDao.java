@@ -18,4 +18,6 @@ public interface CustomerDao extends GenericDao<Customer> {
 
 	List<Customer> getCustomerAndAddress();
 
+	List<Customer> customerWithOrder();
+
 }

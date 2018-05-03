@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Fetch;
 import javax.persistence.criteria.Root;
 
 import org.springframework.stereotype.Repository;
@@ -12,6 +13,7 @@ import com.senla.petshop.api.dao.goods.OrderDao;
 import com.senla.petshop.dao.AbstractDaoImpl;
 import com.senla.petshop.model.enums.OrderStatus;
 import com.senla.petshop.model.goods.Order;
+import com.senla.petshop.model.person.Customer;
 
 @Repository
 public class OrderDaoImpl extends AbstractDaoImpl<Order> implements OrderDao {
@@ -22,6 +24,15 @@ public class OrderDaoImpl extends AbstractDaoImpl<Order> implements OrderDao {
 
 	public OrderDaoImpl() {
 		super(Order.class);
+	}
+
+	@Override
+	public List<Order> orderWithCustomer() {
+		CriteriaBuilder builder = getSession().getCriteriaBuilder();
+		CriteriaQuery<Order> query = builder.createQuery(Order.class);
+		Root<Order> root = query.from(Order.class);
+		Fetch<Order, Customer> orderCustomer = root.fetch("order");
+		return getSession().createQuery(query).getResultList();
 	}
 
 	@Override

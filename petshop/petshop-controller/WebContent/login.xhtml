@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<title>login</title>
+</h:head>
+<h:body>
+	<h1 align="center">Login</h1>
+	<h:form>
+		<h:panelGrid frame="vsides" columns="2" id="matchGrid" cellpadding="5">
+			<h:outputLabel for="log" value="Login: *" />
+			<p:inputText id="log" value="#{personBean.authenticator.login}"
+				required="true" />
+
+			<h:outputLabel for="pwd1" value="Password: *" />
+			<p:password id="pwd1" value="#{personBean.authenticator.password}"
+				label="Password 1" required="true" />
+
+
+			<h:commandButton value="Save" icon="ui-icon-check"
+				action="#{personBean.checkPerson(personBean.person.name)}" />
+		</h:panelGrid>
+
+	</h:form>
+</h:body>
+</html>

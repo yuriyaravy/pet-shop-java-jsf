@@ -11,7 +11,7 @@ import javax.persistence.OneToMany;
 import com.senla.petshop.model.goods.Replenishment;
 
 @Entity
-@DiscriminatorValue("ROLE_ADMIN")
+@DiscriminatorValue("admin")
 public class Admin extends Person {
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "admin", cascade = CascadeType.ALL)

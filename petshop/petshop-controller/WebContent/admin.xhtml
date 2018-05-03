@@ -13,7 +13,7 @@
 	<h:form id="form">
 		<p:growl id="msgs" showDetail="true" />
 		<h2 style="margin-top: 0" align="center">Admin menu page</h2>
-		
+
 		<p:tabView>
 			<p:tab title="Add new animal">
 				<h:panelGrid columns="2" cellpadding="10">
@@ -53,7 +53,7 @@
 								<h:outputText />
 							</h:panelGrid>
 							<h:commandButton value="Save" icon="ui-icon-check"
-								action="#{animalBean.persistAnimal(animalBean.animalInfo, animalBean.animalType)}" />
+								action="#{animalBean.persistAnimal}" />
 						</p:panel>
 
 					</h:form>
@@ -73,28 +73,36 @@
 								<h:outputText value="#{productBean.product.name}" />
 
 								<h:outputLabel for="name" value="Name of producers: " />
-								<p:inputText id="name" value="#{productBean.productDetail.name}" label="Name_producer" />
+								<p:inputText id="name" value="#{productBean.productDetail.name}"
+									label="Name_producer" />
 								<p:message for="city" />
 								<h:outputText value="#{productBean.productDetail.name}" />
 
 								<h:outputLabel for="city" value="City: " />
-								<p:inputText id="city"	value="#{productBean.productDetail.address.city}" label="City" />
+								<p:inputText id="city"
+									value="#{productBean.productDetail.address.city}" label="City" />
 								<p:message for="city" />
 								<h:outputText value="#{productBean.productDetail.address.city}" />
-								
+
 								<h:outputLabel for="street" value="Street:" />
-								<p:inputText id="street" value="#{productBean.productDetail.address.street}" label="Street" />
+								<p:inputText id="street"
+									value="#{productBean.productDetail.address.street}"
+									label="Street" />
 								<p:message for="street" />
-								<h:outputText value="#{productBean.productDetail.address.street}" />
-								
+								<h:outputText
+									value="#{productBean.productDetail.address.street}" />
+
 								<h:outputText for="apartment" value="Apartment:" />
-								<p:inputText id="apartment" value="#{productBean.productDetail.address.apartment}" label="Apartment"/>
+								<p:inputText id="apartment"
+									value="#{productBean.productDetail.address.apartment}"
+									label="Apartment" />
 								<p:message for="apartment" />
-								<h:outputText value="#{productBean.productDetail.address.apartment}" />
-								
+								<h:outputText
+									value="#{productBean.productDetail.address.apartment}" />
+
 							</h:panelGrid>
-							<h:commandButton value="Save" icon="ui-icon-check" 
-								action="#{productBean.persistProduct(productBean.productDetail, productBean.adress)}" />
+							<h:commandButton value="Save" icon="ui-icon-check"
+								action="#{productBean.persistProduct}" />
 						</p:panel>
 					</h:form>
 				</h:panelGrid>
@@ -105,17 +113,17 @@
 					<p:dataTable var="replenishment"
 						value="#{replenishmentBean.replenishments}" scrollable="true"
 						scrollHeight="50">
-						<p:column headerText="Id" >
+						<p:column headerText="Id">
 							<h:outputText value="#{replenishment.id}" />
 						</p:column>
 						<p:column headerText="Name of product"
 							footerText="Name of product">
 							<h:outputText value="#{replenishment.product.name}" />
 						</p:column>
-						<p:column headerText="Name of admin" >
+						<p:column headerText="Name of admin">
 							<h:outputText value="#{replenishment.admin.name}" />
 						</p:column>
-						<p:column headerText="Type of animal" >
+						<p:column headerText="Type of animal">
 							<h:outputText value="#{replenishment.animal.animalType.variety}" />
 						</p:column>
 					</p:dataTable>
@@ -138,12 +146,7 @@
 								<h:outputText value="#{customer.surname}" />
 							</p:column>
 							<p:column style="width:32px;text-align: center">
-								<p:commandButton update=":form:customerDetail"
-									oncomplete="PF('customerDialog').show()" icon="ui-icon-search"
-									title="View">
-									<f:setPropertyActionListener value="#{customer}"
-										target="#{customerBean.selectedCustomer}" />
-								</p:commandButton>
+
 							</p:column>
 						</p:dataTable>
 					</h:form>
@@ -155,14 +158,14 @@
 					<h:form>
 						<p:dataTable var="animalInfo" value="#{animalBean.amimalsInfo}"
 							scrollable="true" scrollHeight="250">
-							<p:column headerText="Id" >
+							<p:column headerText="Id">
 								<h:outputText value="#{animalInfo.id}" />
 							</p:column>
 							<p:column headerText="Name of animal">
 								<h:outputText value="#{animalInfo.name}" />
 							</p:column>
-							<p:column headerText="Name of owner" >
-								<h:outputText value="#{animalInfo.owner.name}"/>
+							<p:column headerText="Name of owner">
+								<h:outputText value="#{animalInfo.owner.name}" />
 							</p:column>
 							<p:column headerText="Vaccination">
 								<h:outputText value="#{animalInfo.vaccination}" />

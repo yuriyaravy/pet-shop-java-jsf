@@ -12,7 +12,7 @@ import com.senla.petshop.model.animal.Animal;
 import com.senla.petshop.model.goods.Order;
 
 @Entity
-@DiscriminatorValue("ROLE_USER")
+@DiscriminatorValue("customer")
 public class Customer extends Person {
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "info", cascade = CascadeType.ALL)
