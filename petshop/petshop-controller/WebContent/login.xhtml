@@ -8,19 +8,20 @@
 </h:head>
 <h:body>
 	<h1 align="center">Login</h1>
-	<h:form>
-		<h:panelGrid frame="vsides" columns="2" id="matchGrid" cellpadding="5">
+	<h:form name="form_login" action="j_spring_security_check"
+		method="POST">
+		<h:panelGrid frame="vsides" columns="2" cellpadding="5">
 			<h:outputLabel for="log" value="Login: *" />
-			<p:inputText id="log" value="#{loginBean.person.aunthenticator.login}"
+			<p:inputText id="log" value="#{loginBean.authenticator.login}"
 				required="true" />
 
-			<h:outputLabel for="pwd1" value="Password: *" />
-			<p:password id="pwd1" value="#{loginBean.person.aunthenticator.password}"
-				label="Password 1" required="true" />
+			<h:outputLabel for="pass" value="Password: *" />
+			<p:password id="pass" value="#{loginBean.authenticator.password}"
+				label="Password " required="true" />
 
 
 			<h:commandButton value="Save" icon="ui-icon-check"
-				action="#{loginBean.checkPerson(loginBean.person.name)}" />
+				action="#{loginBean.checkPerson(loginBean.authenticator)}" />
 		</h:panelGrid>
 
 	</h:form>

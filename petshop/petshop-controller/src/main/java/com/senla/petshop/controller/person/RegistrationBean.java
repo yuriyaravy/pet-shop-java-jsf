@@ -11,13 +11,14 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import com.senla.petshop.api.service.person.PersonService;
 import com.senla.petshop.model.enums.Role;
 import com.senla.petshop.model.person.Address;
+import com.senla.petshop.model.person.Admin;
 import com.senla.petshop.model.person.Authenticator;
 import com.senla.petshop.model.person.Customer;
 import com.senla.petshop.model.person.Person;
 
-@ManagedBean(name = "personBean")
+@ManagedBean(name = "registrationBean")
 @RequestScoped
-public class PersonBean implements Serializable {
+public class RegistrationBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -28,7 +29,7 @@ public class PersonBean implements Serializable {
 
 	@ManagedProperty(value = "#{personService}")
 	private PersonService personService;
-	
+
 	public void persistPerson(Person person) {
 		person.setAunthenticator(this.authenticator);
 		person.setAddress(this.address);
@@ -50,9 +51,13 @@ public class PersonBean implements Serializable {
 	}
 
 	public Person getPerson() {
-//		if (person == null) {
-//			person = new Customer();
-//		}
+		if (person == null) {
+			if (role == Role.ROLE_ADMIN) {
+				person = new Admin();
+			} else {
+				person = new Customer();
+			}
+		}
 		return person;
 	}
 
@@ -83,7 +88,5 @@ public class PersonBean implements Serializable {
 	public void setPersonService(PersonService personService) {
 		this.personService = personService;
 	}
-
-	
 
 }

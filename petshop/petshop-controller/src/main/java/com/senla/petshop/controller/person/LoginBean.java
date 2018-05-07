@@ -6,9 +6,14 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
-import com.senla.petshop.model.person.Customer;
+import com.senla.petshop.api.service.person.AuthenticatorService;
+import com.senla.petshop.api.service.person.PersonService;
+import com.senla.petshop.model.person.Admin;
+import com.senla.petshop.model.person.Authenticator;
 import com.senla.petshop.model.person.Person;
 
 @ManagedBean(name = "loginBean")
@@ -20,16 +25,46 @@ public class LoginBean implements Serializable {
 	@ManagedProperty(value = "#{userDetailsService}")
 	private UserDetailsService userDetailsService;
 
-	private Person person;
+	@ManagedProperty(value = "#{personService}")
+	private PersonService personService;
 
-	public Person checkPerson(String username) {
-		return (Person) userDetailsService.loadUserByUsername(username);
+	@ManagedProperty(value = "#{authenticatorService}")
+	private AuthenticatorService authenticatorService;
+
+	private Person person;
+	private Authenticator authenticator;
+
+	public void checkPerson(Authenticator authenticator) {
+		Integer authId = authenticatorService.getAuthenticatorId(authenticator.getLogin(), authenticator.getPassword());
+		Person personDB = personService.getPersonById(authId);
+		UserDetails userdetail = userDetailsService.loadUserByUsername(personDB.getName());
+//		this.person = (Person) getPrincipal();
+	}
+
+	private UserDetails getPrincipal() {
+		Object userDetails = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+		if (userDetails instanceof UserDetails) {
+			return (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		} else
+			return null;
+	}
+
+	public Authenticator getAuthenticator() {
+		if (authenticator == null) {
+			authenticator = new Authenticator();
+		}
+		return authenticator;
+	}
+
+	public void setAuthenticator(Authenticator authenticator) {
+		this.authenticator = authenticator;
 	}
 
 	public Person getPerson() {
-		// if(person == null) {
-		// person = new Customer();
-		// }
+		if (person == null) {
+			person = new Admin();
+		}
 		return person;
 	}
 
@@ -43,6 +78,22 @@ public class LoginBean implements Serializable {
 
 	public void setUserDetailsService(UserDetailsService userDetailsService) {
 		this.userDetailsService = userDetailsService;
+	}
+
+	public PersonService getPersonService() {
+		return personService;
+	}
+
+	public void setPersonService(PersonService personService) {
+		this.personService = personService;
+	}
+
+	public AuthenticatorService getAuthenticatorService() {
+		return authenticatorService;
+	}
+
+	public void setAuthenticatorService(AuthenticatorService authenticatorService) {
+		this.authenticatorService = authenticatorService;
 	}
 
 }

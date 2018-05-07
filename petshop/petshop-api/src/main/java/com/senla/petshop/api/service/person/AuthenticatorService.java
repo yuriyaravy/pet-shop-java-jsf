@@ -10,4 +10,6 @@ public interface AuthenticatorService {
 
 	void persistAuthenticator(Authenticator authen);
 
+	Authenticator getAuthenticatorById(Integer id);
+
 }

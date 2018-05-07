@@ -30,7 +30,7 @@ public class Order extends Base {
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "product_id")
-	private Product products;
+	private Product product;
 
 	@Column
 	@Enumerated(EnumType.STRING)
@@ -59,12 +59,12 @@ public class Order extends Base {
 		this.animal = animal;
 	}
 
-	public Product getProducts() {
-		return products;
+	public Product getProduct() {
+		return product;
 	}
 
-	public void setProducts(Product products) {
-		this.products = products;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
 	public Date getStart() {

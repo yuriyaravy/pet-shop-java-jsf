@@ -266,3 +266,5 @@ petshop/bin/com/senla/petshop/api/service/person/PersonService.class
 .recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/segments_4
 .recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_3.tis
 .recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_3.tii
+petshop/petshop-controller/target/classes/com/senla/petshop/controller/person/RegistrationBean.class
+petshop/petshop-controller/target/classes/com/senla/petshop/controller/person/LoginBean.class

@@ -8,12 +8,15 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 
+import org.springframework.security.core.context.SecurityContextHolder;
+
 import com.senla.petshop.api.service.animal.AnimalInfoService;
 import com.senla.petshop.api.service.animal.AnimalService;
 import com.senla.petshop.api.service.animal.AnimalTypeService;
 import com.senla.petshop.model.animal.Animal;
 import com.senla.petshop.model.animal.AnimalInfo;
 import com.senla.petshop.model.animal.AnimalType;
+import com.senla.petshop.model.person.Person;
 
 @ManagedBean(name = "animalBean")
 @RequestScoped
@@ -29,6 +32,8 @@ public class AnimalBean implements Serializable {
 
 	@ManagedProperty(value = "#{animalInfoService}")
 	private AnimalInfoService animalInfoService;
+
+	private Person admin;
 
 	private Animal animal;
 	private AnimalInfo animalInfo;
@@ -59,6 +64,18 @@ public class AnimalBean implements Serializable {
 
 	public void setAmimalsInfo(List<AnimalInfo> amimalsInfo) {
 		this.amimalsInfo = amimalsInfo;
+	}
+
+	public void setAdmin(Person admin) {
+		this.admin = admin;
+	}
+
+	public AnimalTypeService getAnimalTypeService() {
+		return animalTypeService;
+	}
+
+	public AnimalInfoService getAnimalInfoService() {
+		return animalInfoService;
 	}
 
 	public List<Animal> getAnimals() {

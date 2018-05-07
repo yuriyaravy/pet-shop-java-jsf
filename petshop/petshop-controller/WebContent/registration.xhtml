@@ -12,40 +12,40 @@
 	<h:form>
 		<h:panelGrid frame="vsides" columns="2" id="matchGrid" cellpadding="5">
 			<h:outputLabel for="log" value="Login: *" />
-			<p:inputText id="log" value="#{personBean.authenticator.login}"
+			<p:inputText id="log" value="#{registrationBean.authenticator.login}"
 				required="true" />
 
 			<h:outputLabel for="pwd1" value="Password 1: *" />
-			<p:password id="pwd1" value="#{personBean.authenticator.password}"
+			<p:password id="pwd1" value="#{registrationBean.authenticator.password}"
 				match="pwd2" label="Password 1" required="true" />
 
 			<h:outputLabel for="pwd2" value="Password 2: *" />
-			<p:password id="pwd2" value="#{personBean.authenticator.password}"
+			<p:password id="pwd2" value="#{registrationBean.authenticator.password}"
 				label="Password 2" required="true" />
 
 			<h:outputLabel value="Name: *" />
-			<p:inputText value="#{personBean.person.name}" required="true" />
+			<p:inputText value="#{registrationBean.person.name}" required="true" />
 
 			<h:outputLabel value="Surname: " />
-			<p:inputText value="#{personBean.person.surname}" />
+			<p:inputText value="#{registrationBean.person.surname}" />
 
 			<h:outputLabel value="City: *" />
-			<p:inputText value="#{personBean.address.city}" required="true" />
+			<p:inputText value="#{registrationBean.address.city}" required="true" />
 
 			<h:outputLabel value="Street: " />
-			<p:inputText value="#{personBean.address.street}" />
+			<p:inputText value="#{registrationBean.address.street}" />
 
 			<h:outputLabel value="Apartment: " />
-			<p:inputText value="#{personBean.address.apartment}" />
+			<p:inputText value="#{registrationBean.address.apartment}" />
 
 			<h:outputLabel value="Role : " />
-			<p:selectOneRadio value="#{personBean.person.role}">
+			<p:selectOneRadio value="#{registrationBean.person.role}">
 				<f:selectItem itemValue="ROLE_ADMIN" itemLabel="Admin" />
 				<f:selectItem itemValue="ROLE_USER" itemLabel="Customer" />
 			</p:selectOneRadio>
 			<h:commandButton update="matchGrid" value="Submit"
 				icon="ui-icon-check"
-				action="#{personBean.persistPerson(personBean.person)}" />
+				action="#{registrationBean.persistPerson(registrationBean.person)}" />
 		</h:panelGrid>
 
 	</h:form>

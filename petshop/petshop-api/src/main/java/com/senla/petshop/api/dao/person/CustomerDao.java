@@ -14,8 +14,6 @@ public interface CustomerDao extends GenericDao<Customer> {
 
 	List<Customer> sortByPet();
 
-	Customer getCustomerByAuthenticator(Authenticator authenticator);
-
 	List<Customer> getCustomerAndAddress();
 
 	List<Customer> customerWithOrder();

@@ -49,8 +49,8 @@ public class CustomerBean implements Serializable {
 	public void init() {
 		orders = orderService.orderWithCustomer();
 		customers = customerService.customerWithOrder();
-		products = productService.productsWithDetails();
-//		animals = animalService.
+//		products = productService.productsWithDetails();
+		// animals = animalService.
 	}
 
 	public void addAnimalToCustomer(Animal animal) {
@@ -64,7 +64,7 @@ public class CustomerBean implements Serializable {
 	public void addProductToCustomerOrder(Product product) {
 		Order order = new Order();
 		order.setStatus(OrderStatus.PROCESSING);
-		order.setProducts(productService.getProductById(product.getId()));
+		order.setProduct(productService.getProductById(product.getId()));
 		this.customer.setOrder((List<Order>) order);
 		customerService.update(this.customer);
 	}

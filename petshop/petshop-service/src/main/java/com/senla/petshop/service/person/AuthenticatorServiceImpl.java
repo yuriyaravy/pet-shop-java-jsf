@@ -14,10 +14,15 @@ public class AuthenticatorServiceImpl implements AuthenticatorService {
 
 	@Autowired
 	private AuthenticatorDao authenticatorDao;
-	
+
 	@Override
 	public void persistAuthenticator(Authenticator authen) {
 		authenticatorDao.create(authen);
+	}
+
+	@Override
+	public Authenticator getAuthenticatorById(Integer id) {
+		return authenticatorDao.getById(id);
 	}
 
 	@Override
