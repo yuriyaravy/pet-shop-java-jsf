@@ -49,85 +49,136 @@
 </style>
 </h:head>
 <h:body>
-	<h:form id="form">
-		<p:tabView>
-			<p:tab title="List of yuor Animal">
-				<h:panelGrid columns="4" cellpadding="10">
-					<h:form>
-						<p:dataTable var="pet" value="#{customerBean.customer.pets}"
-							scrollable="true" scrollHeight="250">
-							<f:facet name="header">
+	<!-- 	<h:form id="form"> -->
+	<p:tabView>
+		<p:tab title="Animal">
+			<h:panelGrid>
+				<h:form>
+					<f:facet name="header">Animals</f:facet>
+					<p:dataTable var="animal" value="#{customerBean.animals}"
+						scrollable="true" scrollHeight="250">
+						<p:column headerText="Id">
+							<h:outputText value="#{animal.id}" />
+						</p:column>
+						<p:column headerText="Name of animal">
+							<h:outputText value="#{animal.animalInfo.name}" />
+						</p:column>
+						<p:column headerText="Name of owner">
+							<h:outputText value="#{animal.animalType.variety}" />
+						</p:column>
+						<p:column headerText="Vaccination">
+							<h:outputText value="#{animal.animalInfo.vaccination}" />
+						</p:column>
+						<p:column headerText="add">
+							<h:commandButton value="Add"
+								action="customerBean.addAnimalToCustomer(animal)" />
+						</p:column>
+					</p:dataTable>
+				</h:form>
+			</h:panelGrid>
+		</p:tab>
+
+		<p:tab title="Product">
+			<h:panelGrid>
+				<h:form>
+					<f:facet name="header">Product</f:facet>
+					<p:dataTable var="product" value="#{customerBean.products}"
+						scrollable="true" scrollHeight="250">
+						<p:column headerText="Id">
+							<h:outputText value="#{product.id}" />
+						</p:column>
+						<p:column headerText="Name of animal">
+							<h:outputText value="#{product.name}" />
+						</p:column>
+						<p:column headerText="Name of owner">
+							<h:outputText value="#{product.productDetail.name}" />
+						</p:column>
+						<p:column headerText="Add">
+							<h:commandButton value="Add"
+								action="customerBean.addProductToCustomerOrder(product)" />
+						</p:column>
+					</p:dataTable>
+				</h:form>
+			</h:panelGrid>
+		</p:tab>
+
+		<p:tab title="List of yuor Animal">
+			<h:panelGrid columns="4" cellpadding="10">
+				<h:form>
+					<p:dataTable var="pet" value="#{customerBean.customer.pets}"
+						scrollable="true" scrollHeight="250">
+						<f:facet name="header">
           						  Animla detailed information
                      	   </f:facet>
-							<p:column style="width:16px">
-								<p:rowToggler />
-							</p:column>
-							<p:column headerText="Id">
+						<p:column style="width:16px">
+							<p:rowToggler />
+						</p:column>
+						<p:column headerText="Id">
+							<h:outputText value="#{pet.id}" />
+						</p:column>
+						<p:column headerText="Name of animal">
+							<h:outputText value="#{pet.name}" />
+						</p:column>
+						<p:column headerText="Vaccination">
+							<h:outputText value="#{pet.vaccination}" />
+						</p:column>
+						<p:column headerText="Sex of animal">
+							<h:outputText value="male" rendered="#{pet.sex}" />
+							<h:outputText value="female" rendered="#{not pet.sex}" />
+						</p:column>
+
+						<p:rowExpansion>
+							<p:panelGrid columns="3" columnClasses="label,value"
+								style="width:300px">
+								<f:facet name="header">
+									<p:graphicImage value="place for foto" />
+								</f:facet>
+
+								<h:outputText value="Id:" />
 								<h:outputText value="#{pet.id}" />
-							</p:column>
-							<p:column headerText="Name of animal">
+
+								<h:outputText value="Year" />
 								<h:outputText value="#{pet.name}" />
-							</p:column>
-							<p:column headerText="Vaccination">
+
+								<h:outputText value="Color:" />
 								<h:outputText value="#{pet.vaccination}" />
-							</p:column>
-							<p:column headerText="Sex of animal">
-								<h:outputText value="male" rendered="#{pet.sex}" />
-								<h:outputText value="female" rendered="#{not pet.sex}" />
-							</p:column>
 
-							<p:rowExpansion>
-								<p:panelGrid columns="3" columnClasses="label,value"
-									style="width:300px">
-									<f:facet name="header">
-										<p:graphicImage value="place for foto" />
-									</f:facet>
+							</p:panelGrid>
+						</p:rowExpansion>
+					</p:dataTable>
+				</h:form>
+			</h:panelGrid>
+		</p:tab>
 
-									<h:outputText value="Id:" />
-									<h:outputText value="#{pet.id}" />
-
-									<h:outputText value="Year" />
-									<h:outputText value="#{pet.name}" />
-
-									<h:outputText value="Color:" />
-									<h:outputText value="#{pet.vaccination}" />
-
-								</p:panelGrid>
-							</p:rowExpansion>
-						</p:dataTable>
-					</h:form>
-				</h:panelGrid>
-			</p:tab>
-
-			<p:tab title="List of yuor Order">
-				<h:panelGrid columns="2" cellpadding="10">
-					<h:form>
-						<p:dataTable var="orders" value="#{orderBean.orders}"
-							scrollable="true" scrollHeight="250">
-							<f:facet name="header">
+		<p:tab title="List of yuor Order">
+			<h:panelGrid columns="2" cellpadding="10">
+				<h:form>
+					<p:dataTable var="orders" value="#{customerBean.orders}"
+						scrollable="true" scrollHeight="250">
+						<f:facet name="header">
           						  Order detailed information
                      	   </f:facet>
-							<p:column style="width:16px">
-								<p:rowToggler />
-							</p:column>
-							<p:column headerText="Id">
-								<h:outputText value="#{orders.id}" />
-							</p:column>
-							<p:column headerText="Order of animal">
-								<h:outputText value="#{orders.animal.name}" />
-							</p:column>
-							<p:column headerText="Order of product">
-								<h:outputText value="#{orders.product.name}" />
-							</p:column>
+						<p:column style="width:16px">
+							<p:rowToggler />
+						</p:column>
+						<p:column headerText="Id">
+							<h:outputText value="#{orders.id}" />
+						</p:column>
+						<p:column headerText="Order of animal">
+							<h:outputText value="#{orders.animal.name}" />
+						</p:column>
+						<p:column headerText="Order of product">
+							<h:outputText value="#{orders.product.name}" />
+						</p:column>
 
-						</p:dataTable>
-					</h:form>
-				</h:panelGrid>
-			</p:tab>
+					</p:dataTable>
+				</h:form>
+			</h:panelGrid>
+		</p:tab>
 
 
-		</p:tabView>
-	</h:form>
+	</p:tabView>
+	<!-- 	</h:form> -->
 
 </h:body>
 </html>

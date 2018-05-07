@@ -28,9 +28,12 @@ public class PersonBean implements Serializable {
 
 	@ManagedProperty(value = "#{personService}")
 	private PersonService personService;
-
-	@ManagedProperty(value = "#{userDetailsService}")
-	private UserDetailsService userDetailsService;
+	
+	public void persistPerson(Person person) {
+		person.setAunthenticator(this.authenticator);
+		person.setAddress(this.address);
+		personService.persistPerson(person);
+	}
 
 	public Authenticator getAuthenticator() {
 		if (authenticator == null) {
@@ -47,9 +50,9 @@ public class PersonBean implements Serializable {
 	}
 
 	public Person getPerson() {
-		if (person == null) {
-			person = new Customer();
-		}
+//		if (person == null) {
+//			person = new Customer();
+//		}
 		return person;
 	}
 
@@ -81,22 +84,6 @@ public class PersonBean implements Serializable {
 		this.personService = personService;
 	}
 
-	public UserDetailsService getUserDetailsService() {
-		return userDetailsService;
-	}
-
-	public void setUserDetailsService(UserDetailsService userDetailsService) {
-		this.userDetailsService = userDetailsService;
-	}
-
-	public void persistPerson(Person person) {
-		person.setAunthenticator(this.authenticator);
-		person.setAddress(this.address);
-		personService.persistPerson(person);
-	}
-
-	public Person checkPerson(String username) {
-		return (Person) userDetailsService.loadUserByUsername(username);
-	}
+	
 
 }

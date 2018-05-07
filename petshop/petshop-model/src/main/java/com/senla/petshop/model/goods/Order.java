@@ -1,6 +1,7 @@
 package com.senla.petshop.model.goods;
 
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -41,7 +42,7 @@ public class Order extends Base {
 
 	@Column
 	@Temporal(TemporalType.DATE)
-	private Date start;
+	private Date start; // = new GregorianCalendar().getTime();
 
 	@Column
 	@Temporal(TemporalType.DATE)

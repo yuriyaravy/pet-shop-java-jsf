@@ -33,7 +33,7 @@ public class CustomerDaoImpl extends AbstractDaoImpl<Customer> implements Custom
 		CriteriaBuilder builder = getSession().getCriteriaBuilder();
 		CriteriaQuery<Customer> query = builder.createQuery(Customer.class);
 		Root<Customer> root = query.from(Customer.class);
-		Fetch<Customer, Order> customerOrder = root.fetch("customer");
+		Fetch<Customer, Order> customerOrder = root.fetch("order");
 		return getSession().createQuery(query).getResultList();
 	}
 

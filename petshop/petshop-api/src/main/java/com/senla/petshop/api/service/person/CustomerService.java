@@ -20,4 +20,6 @@ public interface CustomerService {
 
 	List<Customer> customerWithOrder();
 
+	void update(Customer customer);
+
 }

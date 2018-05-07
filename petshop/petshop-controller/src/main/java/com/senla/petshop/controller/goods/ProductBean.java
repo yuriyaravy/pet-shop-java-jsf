@@ -31,21 +31,32 @@ public class ProductBean implements Serializable {
 
 	private Product product;
 	private ProductDetail productDetail;
-	private Address adress;
+	private Address address;
 	private List<Product> products;
-
-	public Address getAdress() {
-		return adress;
+	
+	public void persistProduct() {
+		Product product = new Product();
+		this.productDetail.setAddress(this.address);
+		product.setProductDetail(this.productDetail);
+		productService.persistProduct(product);
 	}
 
-	public void setAdress(Address adress) {
-		this.adress = adress;
+	public Address getAddress() {
+		if (address == null) {
+			address = new Address();
+		}
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public ProductDetailService getDetailService() {
+		return detailService;
 	}
 
 	public ProductService getProductService() {
-		if (productDetail == null) {
-			productDetail = new ProductDetail();
-		}
 		return productService;
 	}
 
@@ -95,11 +106,6 @@ public class ProductBean implements Serializable {
 		this.products = products;
 	}
 
-	public void persistProduct() {
-		Product product = new Product();
-		this.productDetail.setAddress(this.adress);
-		product.setProductDetail(this.productDetail);
-		productService.persistProduct(product);
-	}
+	
 
 }

@@ -10,4 +10,6 @@ public interface AnimalInfoService {
 
 	List<AnimalInfo> getAll();
 
+	void deleteAnimalInf(AnimalInfo info);
+
 }

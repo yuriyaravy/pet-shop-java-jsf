@@ -11,16 +11,16 @@
 	<h:form>
 		<h:panelGrid frame="vsides" columns="2" id="matchGrid" cellpadding="5">
 			<h:outputLabel for="log" value="Login: *" />
-			<p:inputText id="log" value="#{personBean.authenticator.login}"
+			<p:inputText id="log" value="#{loginBean.person.aunthenticator.login}"
 				required="true" />
 
 			<h:outputLabel for="pwd1" value="Password: *" />
-			<p:password id="pwd1" value="#{personBean.authenticator.password}"
+			<p:password id="pwd1" value="#{loginBean.person.aunthenticator.password}"
 				label="Password 1" required="true" />
 
 
 			<h:commandButton value="Save" icon="ui-icon-check"
-				action="#{personBean.checkPerson(personBean.person.name)}" />
+				action="#{loginBean.checkPerson(loginBean.person.name)}" />
 		</h:panelGrid>
 
 	</h:form>

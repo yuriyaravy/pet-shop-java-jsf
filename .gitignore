@@ -252,3 +252,17 @@ petshop/petshop-controller/target/maven-status/maven-compiler-plugin/compile/def
 petshop/petshop-controller/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
 petshop/petshop-controller/target/m2e-wtp/web-resources/META-INF/maven/com.senla/petshop-controller/pom.xml
 petshop/petshop-controller/target/m2e-wtp/web-resources/META-INF/maven/com.senla/petshop-controller/pom.properties
+petshop/bin/com/senla/petshop/service/person/PersonServiceImpl.class
+petshop/bin/com/senla/petshop/controller/person/PersonBean.class
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_3.prx
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_3.nrm
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_3.frq
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_3.fnm
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_3.fdx
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_3.fdt
+petshop/bin/com/senla/petshop/controller/person/LoginBean.class
+petshop/bin/com/senla/petshop/controller/animal/AnimalBean.class
+petshop/bin/com/senla/petshop/api/service/person/PersonService.class
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/segments_4
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_3.tis
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_3.tii

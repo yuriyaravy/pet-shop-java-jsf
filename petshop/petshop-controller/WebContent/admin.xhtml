@@ -10,170 +10,146 @@
 	<title>JSF Admin first</title>
 </h:head>
 <h:body>
-	<h:form id="form">
+	<h:form>
 		<p:growl id="msgs" showDetail="true" />
 		<h2 style="margin-top: 0" align="center">Admin menu page</h2>
 
-		<p:tabView>
-			<p:tab title="Add new animal">
-				<h:panelGrid columns="2" cellpadding="10">
-					<h:form id="animal">
-						<p:panel header="New Animal">
-							<h:panelGrid columns="4" cellpadding="10">
-								<h:outputLabel for="variety" value="Variety:" />
-								<p:inputText id="variety"
-									value="#{animalBean.animalType.variety}" label="Variety" />
-								<p:message for="variety" />
-								<h:outputText value="#{animalBean.animalType.variety}" />
-								<h:outputLabel for="name" value="Name: " />
-								<p:inputText id="name" value="#{animalBean.animalInfo.name}"
-									label="Name" />
-								<p:message for="name" />
-								<h:outputText value="#{animalBean.animalInfo.name}" />
-								<h:outputLabel for="age" value="Age: " />
-								<p:inputText id="age" value="#{animalBean.animalInfo.age}"
-									label="Age" />
-								<p:message for="age" />
-								<h:outputText value="#{animalBean.animalInfo.age}" />
-								<h:outputLabel for="weight" value="Weight: " />
-								<p:inputText id="weight" value="#{animalBean.animalInfo.weight}"
-									label="Weight" />
-								<p:message for="weight" />
-								<h:outputText value="#{animalBean.animalInfo.weight}" />
-								<h:outputText for="vaccination" value="Vaccination: " />
-								<p:selectBooleanCheckbox id="vaccination"
-									value="#{animalBean.animalInfo.vaccination}" />
-								<p:message for="vaccination" />
-								<h:outputText />
-								<p:outputLabel for="sex" value="Sex of animal:" />
-								<p:selectOneRadio id="sex" value="#{animalBean.animalInfo.sex}">
-									<f:selectItem itemValue="false" itemLabel="Female:" />
-									<f:selectItem itemValue="true" itemLabel="Male:" />
-								</p:selectOneRadio>
-								<h:outputText />
-							</h:panelGrid>
-							<h:commandButton value="Save" icon="ui-icon-check"
-								action="#{animalBean.persistAnimal}" />
-						</p:panel>
+		<p:tabView cache="false">
 
-					</h:form>
-				</h:panelGrid>
-			</p:tab>
+
 
 			<p:tab title="Add new product">
-				<h:panelGrid columns="2" cellpadding="10">
-					<h:form id="product">
-						<p:panel header="New product">
-							<h:panelGrid columns="4" cellpadding="10">
+				<p:panel header="New product">
+					<h:panelGrid columns="3" cellpadding="10">
 
-								<h:outputLabel for="name_p" value="Name of product:" />
-								<p:inputText id="name_p" value="#{productBean.product.name}"
-									label="Name_product" />
-								<p:message for="name_p" />
-								<h:outputText value="#{productBean.product.name}" />
+						<h:outputLabel value="Name of product:" />
+						<p:inputText value="#{productBean.product.name}"
+							label="Name_product" />
+						<h:outputText value="#{productBean.product.name}" />
 
-								<h:outputLabel for="name" value="Name of producers: " />
-								<p:inputText id="name" value="#{productBean.productDetail.name}"
-									label="Name_producer" />
-								<p:message for="city" />
-								<h:outputText value="#{productBean.productDetail.name}" />
+						<h:outputLabel value="Name of producers: " />
+						<p:inputText value="#{productBean.productDetail.name}"
+							label="Name_producer" />
+						<h:outputText value="#{productBean.productDetail.name}" />
 
-								<h:outputLabel for="city" value="City: " />
-								<p:inputText id="city"
-									value="#{productBean.productDetail.address.city}" label="City" />
-								<p:message for="city" />
-								<h:outputText value="#{productBean.productDetail.address.city}" />
+						<h:outputLabel value="City: " />
+						<p:inputText value="#{productBean.address.city}" label="City" />
+						<h:outputText value="#{productBean.address.city}" />
 
-								<h:outputLabel for="street" value="Street:" />
-								<p:inputText id="street"
-									value="#{productBean.productDetail.address.street}"
-									label="Street" />
-								<p:message for="street" />
-								<h:outputText
-									value="#{productBean.productDetail.address.street}" />
+						<h:outputLabel value="Street:" />
+						<p:inputText value="#{productBean.address.street}" label="Street" />
+						<h:outputText value="#{productBean.address.street}" />
 
-								<h:outputText for="apartment" value="Apartment:" />
-								<p:inputText id="apartment"
-									value="#{productBean.productDetail.address.apartment}"
-									label="Apartment" />
-								<p:message for="apartment" />
-								<h:outputText
-									value="#{productBean.productDetail.address.apartment}" />
+						<h:outputText value="Apartment:" />
+						<p:inputText value="#{productBean.address.apartment}"
+							label="Apartment" />
+						<h:outputText value="#{productBean.address.apartment}" />
 
-							</h:panelGrid>
-							<h:commandButton value="Save" icon="ui-icon-check"
-								action="#{productBean.persistProduct}" />
-						</p:panel>
-					</h:form>
-				</h:panelGrid>
+					</h:panelGrid>
+					<h:commandButton value="Save" icon="ui-icon-check"
+						action="#{productBean.persistProduct}" />
+
+				</p:panel>
+			</p:tab>
+
+			<p:tab title="Add new animal">
+				<p:panel header="New Animal">
+					<h:panelGrid columns="3" cellpadding="10">
+						<h:outputLabel value="Variety:" />
+						<p:inputText value="#{animalBean.animalType.variety}"
+							label="Variety" />
+
+						<h:outputText value="#{animalBean.animalType.variety}" />
+						<h:outputLabel value="Name: " />
+						<p:inputText value="#{animalBean.animalInfo.name}" label="Name" />
+						<h:outputText value="#{animalBean.animalInfo.name}" />
+						<h:outputLabel value="Age: " />
+						<p:inputText value="#{animalBean.animalInfo.age}" label="Age" />
+
+						<h:outputText value="#{animalBean.animalInfo.age}" />
+						<h:outputLabel value="Weight: " />
+						<p:inputText value="#{animalBean.animalInfo.weight}"
+							label="Weight" />
+
+						<h:outputText value="#{animalBean.animalInfo.weight}" />
+						<h:outputText value="Vaccination: " />
+						<p:selectBooleanCheckbox
+							value="#{animalBean.animalInfo.vaccination}" />
+
+						<h:outputText />
+						<p:outputLabel value="Sex of animal:" />
+						<p:selectOneRadio value="#{animalBean.animalInfo.sex}">
+							<f:selectItem itemValue="false" itemLabel="Female:" />
+							<f:selectItem itemValue="true" itemLabel="Male:" />
+						</p:selectOneRadio>
+						<h:outputText />
+					</h:panelGrid>
+					<h:commandButton value="Save" icon="ui-icon-check"
+						action="#{animalBean.persistAnimal}" />
+				</p:panel>
 			</p:tab>
 
 			<p:tab title="Replenishment">
-				<h:form>
-					<p:dataTable var="replenishment"
-						value="#{replenishmentBean.replenishments}" scrollable="true"
-						scrollHeight="50">
-						<p:column headerText="Id">
-							<h:outputText value="#{replenishment.id}" />
-						</p:column>
-						<p:column headerText="Name of product"
-							footerText="Name of product">
-							<h:outputText value="#{replenishment.product.name}" />
-						</p:column>
-						<p:column headerText="Name of admin">
-							<h:outputText value="#{replenishment.admin.name}" />
-						</p:column>
-						<p:column headerText="Type of animal">
-							<h:outputText value="#{replenishment.animal.animalType.variety}" />
-						</p:column>
-					</p:dataTable>
-				</h:form>
+				<p:dataTable var="replenishment"
+					value="#{replenishmentBean.replenishments}" scrollable="true"
+					scrollHeight="50">
+					<p:column headerText="Id">
+						<h:outputText value="#{replenishment.id}" />
+					</p:column>
+					<p:column headerText="Name of product" footerText="Name of product">
+						<h:outputText value="#{replenishment.product.name}" />
+					</p:column>
+					<p:column headerText="Name of admin">
+						<h:outputText value="#{replenishment.admin.name}" />
+					</p:column>
+					<p:column headerText="Type of animal">
+						<h:outputText value="#{replenishment.animal.animalType.variety}" />
+					</p:column>
+				</p:dataTable>
 			</p:tab>
 
 			<p:tab title="List of customer">
 				<h:panelGrid columns="2" cellpadding="10">
-					<h:form>
-						<p:growl id="msgs" showDetail="true" />
-						<p:dataTable id="customerDT" var="customer"
-							value="#{customerBean.customer}">
-							<p:column headerText="Id">
-								<h:outputText value="#{customer.id}" />
-							</p:column>
-							<p:column headerText="Customer name">
-								<h:outputText value="#{customer.name}" />
-							</p:column>
-							<p:column headerText="Customer surname">
-								<h:outputText value="#{customer.surname}" />
-							</p:column>
-							<p:column style="width:32px;text-align: center">
-
-							</p:column>
-						</p:dataTable>
-					</h:form>
+					<p:growl id="msgs" showDetail="true" />
+					<p:dataTable id="customerDT" var="customer"
+						value="#{customerBean.customer}">
+						<p:column headerText="Id">
+							<h:outputText value="#{customer.id}" />
+						</p:column>
+						<p:column headerText="Customer name">
+							<h:outputText value="#{customer.name}" />
+						</p:column>
+						<p:column headerText="Customer surname">
+							<h:outputText value="#{customer.surname}" />
+						</p:column>
+					</p:dataTable>
 				</h:panelGrid>
 			</p:tab>
 
 			<p:tab title="List of Animal">
-				<h:panelGrid columns="2" cellpadding="10">
-					<h:form>
-						<p:dataTable var="animalInfo" value="#{animalBean.amimalsInfo}"
-							scrollable="true" scrollHeight="250">
-							<p:column headerText="Id">
-								<h:outputText value="#{animalInfo.id}" />
-							</p:column>
-							<p:column headerText="Name of animal">
-								<h:outputText value="#{animalInfo.name}" />
-							</p:column>
-							<p:column headerText="Name of owner">
-								<h:outputText value="#{animalInfo.owner.name}" />
-							</p:column>
-							<p:column headerText="Vaccination">
-								<h:outputText value="#{animalInfo.vaccination}" />
-							</p:column>
-						</p:dataTable>
-					</h:form>
+				<h:panelGrid columns="5" cellpadding="10">
+					<p:dataTable var="animalInfo" value="#{animalBean.amimalsInfo}"
+						scrollable="true" scrollHeight="250">
+						<p:column headerText="Id">
+							<h:outputText value="#{animalInfo.id}" />
+						</p:column>
+						<p:column headerText="Name of animal">
+							<h:outputText value="#{animalInfo.name}" />
+						</p:column>
+						<p:column headerText="Name of owner">
+							<h:outputText value="#{animalInfo.owner.name}" />
+						</p:column>
+						<p:column headerText="Vaccination">
+							<h:outputText value="#{animalInfo.vaccination}" />
+						</p:column>
+						<p:column headerText="delete">
+							<h:commandButton value="Delete"
+								action="#{animalBean.deleteAnimalInf(animalInfo)}" />
+						</p:column>
+					</p:dataTable>
 				</h:panelGrid>
 			</p:tab>
+
 
 		</p:tabView>
 	</h:form>

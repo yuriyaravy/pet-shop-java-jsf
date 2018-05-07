@@ -39,7 +39,18 @@ public class AnimalBean implements Serializable {
 	@PostConstruct
 	public void init() {
 		amimalsInfo = animalInfoService.getAll();
-		// animals = animalService.getAnimalAndInfoAndType();
+		animals = animalService.getAnimalAndInfoAndType();
+	}
+
+	public void deleteAnimalInf(AnimalInfo info) {
+		animalInfoService.deleteAnimalInf(info);
+	}
+
+	public void persistAnimal() {
+		Animal animal = new Animal();
+		animal.setInfo(this.animalInfo);
+		animal.setType(this.animalType);
+		animalService.createAnimal(animal);
 	}
 
 	public List<AnimalInfo> getAmimalsInfo() {
@@ -105,13 +116,6 @@ public class AnimalBean implements Serializable {
 
 	public void setAnimalType(AnimalType animalType) {
 		this.animalType = animalType;
-	}
-
-	public void persistAnimal() {
-		Animal animal = new Animal();
-		animal.setInfo(this.animalInfo);
-		animal.setType(this.animalType);
-		animalService.createAnimal(animal);
 	}
 
 }

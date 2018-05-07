@@ -10,4 +10,8 @@ public interface ProductService {
 
 	void persistProduct(Product product);
 
+	Product getProductById(Integer id);
+
+	List<Product> productsWithDetails();
+
 }

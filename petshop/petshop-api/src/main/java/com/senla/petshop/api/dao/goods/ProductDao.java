@@ -9,4 +9,6 @@ public interface ProductDao extends GenericDao<Product> {
 
 	List<Product> sortByName();
 
+	List<Product> productsWithDetails();
+
 }

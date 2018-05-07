@@ -16,7 +16,17 @@ public class ProductServiceImpl implements ProductService {
 
 	@Autowired
 	private ProductDao productDao;
-	
+
+	@Override
+	public List<Product> productsWithDetails() {
+		return productDao.productsWithDetails();
+	}
+
+	@Override
+	public Product getProductById(Integer id) {
+		return productDao.getById(id);
+	}
+
 	@Override
 	public void persistProduct(Product product) {
 		productDao.create(product);

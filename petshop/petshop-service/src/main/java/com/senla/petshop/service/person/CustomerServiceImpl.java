@@ -16,18 +16,15 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Autowired
 	private CustomerDao customerDao;
+	
+	@Override
+	public void update(Customer customer) {
+		customerDao.update(customer);
+	}
 
 	@Override
 	public List<Customer> customerWithOrder() {
-		System.out.println("------customer with order -------");
-		List<Customer> list = customerDao.customerWithOrder();
-		if (list != null) {
-			for (Customer cust : list) {
-				System.out.println(cust.getOrder());
-			}
-		}
-
-		return list;
+		return customerDao.customerWithOrder();
 	}
 
 	@Override

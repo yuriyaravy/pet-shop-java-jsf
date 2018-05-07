@@ -19,11 +19,7 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public List<Order> orderWithCustomer() {
-		System.out.println("------order with customer -------");
-		List<Order> list = orderDao.orderWithCustomer();
-		System.out.println(list);
-
-		return list;
+		return orderDao.orderWithCustomer();
 	}
 
 }
