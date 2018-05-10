@@ -1,5 +1,5 @@
 /.metadata/
-petshop/pom.xml
+
 petshop/bin/com/senla/petshop/service/goods/OrderServiceImpl.class
 petshop/bin/com/senla/petshop/service/animal/AnimalTypeServiceImpl.class
 petshop/bin/com/senla/petshop/service/animal/AnimalServiceImpl.class
@@ -127,7 +127,7 @@ petshop/petshop-controller/.metadata/src/main/webapp/WEB-INF/faces-config.pagefl
 petshop/petshop-controller/.metadata/WebContent/faces-config.pageflow
 petshop/petshop-controller/.metadata/WebContent/WEB-INF/spring/faces-config.pageflow
 petshop/petshop-controller/.metadata/WebContent/WEB-INF/faces-config.pageflow
-petshop/petshop-controller/pom.xml
+
 petshop/petshop-controller/.springBeans
 petshop/petshop-controller/.project
 petshop/petshop-controller/.gitignore
