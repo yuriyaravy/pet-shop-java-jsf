@@ -94,8 +94,8 @@
 							<h:outputText value="#{product.productDetail.name}" />
 						</p:column>
 						<p:column headerText="Add">
-							<h:commandButton value="Add"
-								action="customerBean.addProductToCustomerOrder(product)" />
+							<h:commandButton value="Add" icon="ui-icon-check"
+								action="#{customerBean.addProductToCustomerOrder(product)}" />
 						</p:column>
 					</p:dataTable>
 				</h:form>

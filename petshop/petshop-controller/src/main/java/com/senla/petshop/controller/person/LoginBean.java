@@ -36,19 +36,7 @@ public class LoginBean implements Serializable {
 		Integer authId = authenticatorService.getAuthenticatorId(authenticator.getLogin(), authenticator.getPassword());
 		Person personDB = personService.getPersonById(authId);
 		userDetailsService.loadUserByUsername(personDB.getName());
-		// this.person = (Person) getPrincipal();
 	}
-
-	// private UserDetails getPrincipal() {
-	// Object userDetails =
-	// SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-	//
-	// if (userDetails instanceof UserDetails) {
-	// return (UserDetails)
-	// SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-	// } else
-	// return null;
-	// }
 
 	public Authenticator getAuthenticator() {
 		if (authenticator == null) {
