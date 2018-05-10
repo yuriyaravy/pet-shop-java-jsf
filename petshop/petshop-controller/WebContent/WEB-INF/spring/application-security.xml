@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans:beans
-	xmlns="http://www.springframework.org/schema/security"
-	xmlns:beans="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="
 	http://www.springframework.org/schema/security 
 	http://www.springframework.org/schema/security/spring-security-4.2.xsd
@@ -13,27 +11,24 @@
 	<http auto-config="true">
 		<csrf disabled="true" />
 
-		<intercept-url pattern="/welcome.xhtml"
-			access="isAnonymous()" />
-		<intercept-url pattern="/registration.xhtml"
-			access="isAnonymous()" />
-		<intercept-url pattern="/admin.xhtml"
-			access="hasRole('ROLE_ADMIN')" />
-		<intercept-url pattern="/customer.xhtml"
-			access="hasRole('ROLE_USER')" />
+		<intercept-url pattern="/welcome.xhtml" access="isAnonymous()" />
+		<intercept-url pattern="/registration.xhtml" access="isAnonymous()" />
+		<intercept-url pattern="/admin.xhtml" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/customer.xhtml" access="hasRole('ROLE_USER')" />
 
-		<form-login login-page="/login.xhtml"
-			default-target-url="/welcome.xhtml"
+		<form-login login-page="/login.xhtml" default-target-url="/welcome.xhtml"
 			authentication-failure-url="/login?error" username-parameter="login"
 			password-parameter="password" />
 
 	</http>
 
-	<authentication-manager
-		alias="authenticationManager">
-		<authentication-provider
-			user-service-ref="userDetailsService">
+	<authentication-manager alias="authenticationManager">
+		<authentication-provider user-service-ref="userDetailsServiceImpl">
+
 		</authentication-provider>
 	</authentication-manager>
+
+	<beans:bean id="userDetailsServiceImpl"
+		class="com.senla.petshop.service.person.UserDetailsServiceImpl"></beans:bean>
 
 </beans:beans>

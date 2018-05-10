@@ -9,4 +9,6 @@ public interface AnimalDao extends GenericDao<Animal> {
 
 	List<Animal> getAnimalAndInfoAndType();
 
+	List<Animal> getAnimalAndInfoAndTypeNullCustomer();
+
 }

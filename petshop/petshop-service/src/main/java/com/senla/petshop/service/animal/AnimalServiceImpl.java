@@ -23,6 +23,11 @@ public class AnimalServiceImpl implements AnimalService {
 	}
 
 	@Override
+	public List<Animal> getAnimalAndInfoAndTypeNullCustomer() {
+		return animalDao.getAnimalAndInfoAndTypeNullCustomer();
+	}
+
+	@Override
 	public List<Animal> getAnimalAndInfoAndType() {
 		return animalDao.getAnimalAndInfoAndType();
 	}

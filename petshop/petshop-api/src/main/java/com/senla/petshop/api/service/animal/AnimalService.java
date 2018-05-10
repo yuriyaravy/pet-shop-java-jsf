@@ -14,4 +14,6 @@ public interface AnimalService {
 
 	List<Animal> getAll();
 
+	List<Animal> getAnimalAndInfoAndTypeNullCustomer();
+
 }

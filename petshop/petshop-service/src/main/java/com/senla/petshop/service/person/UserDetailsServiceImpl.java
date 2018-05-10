@@ -10,13 +10,11 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.senla.petshop.api.dao.person.PersonDao;
 import com.senla.petshop.model.person.Person;
 
-@Service("userDetailsService")
 @Transactional
 public class UserDetailsServiceImpl implements UserDetailsService {
 

@@ -6,8 +6,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import com.senla.petshop.api.service.person.AuthenticatorService;
@@ -22,7 +20,7 @@ public class LoginBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@ManagedProperty(value = "#{userDetailsService}")
+	@ManagedProperty(value = "#{userDetailsServiceImpl}")
 	private UserDetailsService userDetailsService;
 
 	@ManagedProperty(value = "#{personService}")
@@ -37,18 +35,20 @@ public class LoginBean implements Serializable {
 	public void checkPerson(Authenticator authenticator) {
 		Integer authId = authenticatorService.getAuthenticatorId(authenticator.getLogin(), authenticator.getPassword());
 		Person personDB = personService.getPersonById(authId);
-		UserDetails userdetail = userDetailsService.loadUserByUsername(personDB.getName());
-//		this.person = (Person) getPrincipal();
+		userDetailsService.loadUserByUsername(personDB.getName());
+		// this.person = (Person) getPrincipal();
 	}
 
-	private UserDetails getPrincipal() {
-		Object userDetails = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-		if (userDetails instanceof UserDetails) {
-			return (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		} else
-			return null;
-	}
+	// private UserDetails getPrincipal() {
+	// Object userDetails =
+	// SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	//
+	// if (userDetails instanceof UserDetails) {
+	// return (UserDetails)
+	// SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	// } else
+	// return null;
+	// }
 
 	public Authenticator getAuthenticator() {
 		if (authenticator == null) {

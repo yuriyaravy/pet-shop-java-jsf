@@ -16,7 +16,12 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Autowired
 	private CustomerDao customerDao;
-	
+
+	@Override
+	public Customer customerByIdWithPets(Integer id) {
+		return customerDao.customerByIdWithPets(id);
+	}
+
 	@Override
 	public void update(Customer customer) {
 		customerDao.update(customer);
@@ -55,7 +60,7 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public List<Customer> getCustomer() {
+	public List<Customer> getAllCustomer() {
 		return customerDao.getAll();
 	}
 

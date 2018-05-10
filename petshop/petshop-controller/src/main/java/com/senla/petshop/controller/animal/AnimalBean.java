@@ -8,15 +8,16 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 
-import org.springframework.security.core.context.SecurityContextHolder;
-
 import com.senla.petshop.api.service.animal.AnimalInfoService;
 import com.senla.petshop.api.service.animal.AnimalService;
 import com.senla.petshop.api.service.animal.AnimalTypeService;
+import com.senla.petshop.api.service.goods.ReplenishmentService;
+import com.senla.petshop.api.service.person.CustomerService;
 import com.senla.petshop.model.animal.Animal;
 import com.senla.petshop.model.animal.AnimalInfo;
 import com.senla.petshop.model.animal.AnimalType;
-import com.senla.petshop.model.person.Person;
+import com.senla.petshop.model.goods.Replenishment;
+import com.senla.petshop.model.person.Customer;
 
 @ManagedBean(name = "animalBean")
 @RequestScoped
@@ -33,18 +34,26 @@ public class AnimalBean implements Serializable {
 	@ManagedProperty(value = "#{animalInfoService}")
 	private AnimalInfoService animalInfoService;
 
-	private Person admin;
+	@ManagedProperty(value = "#{customerService}")
+	private CustomerService customerService;
+
+	@ManagedProperty(value = "#{replenishmentService}")
+	private ReplenishmentService replenishmentService;
 
 	private Animal animal;
 	private AnimalInfo animalInfo;
 	private AnimalType animalType;
+	private List<Replenishment> replenishments;
 	private List<AnimalInfo> amimalsInfo;
 	private List<Animal> animals;
+	private List<Customer> customers;
 
 	@PostConstruct
 	public void init() {
 		amimalsInfo = animalInfoService.getAll();
 		animals = animalService.getAnimalAndInfoAndType();
+		customers = customerService.getAllCustomer();
+		replenishments = replenishmentService.getReplenishmentWithStaff();
 	}
 
 	public void deleteAnimalInf(AnimalInfo info) {
@@ -58,16 +67,20 @@ public class AnimalBean implements Serializable {
 		animalService.createAnimal(animal);
 	}
 
+	public CustomerService getCustomerService() {
+		return customerService;
+	}
+
+	public void setCustomerService(CustomerService customerService) {
+		this.customerService = customerService;
+	}
+
 	public List<AnimalInfo> getAmimalsInfo() {
 		return amimalsInfo;
 	}
 
 	public void setAmimalsInfo(List<AnimalInfo> amimalsInfo) {
 		this.amimalsInfo = amimalsInfo;
-	}
-
-	public void setAdmin(Person admin) {
-		this.admin = admin;
 	}
 
 	public AnimalTypeService getAnimalTypeService() {
@@ -102,6 +115,14 @@ public class AnimalBean implements Serializable {
 		this.animalService = animalService;
 	}
 
+	public List<Customer> getCustomers() {
+		return customers;
+	}
+
+	public void setCustomers(List<Customer> customers) {
+		this.customers = customers;
+	}
+
 	public Animal getAnimal() {
 		if (animal == null) {
 			animal = new Animal();
@@ -133,6 +154,22 @@ public class AnimalBean implements Serializable {
 
 	public void setAnimalType(AnimalType animalType) {
 		this.animalType = animalType;
+	}
+
+	public List<Replenishment> getReplenishments() {
+		return replenishments;
+	}
+
+	public void setReplenishments(List<Replenishment> replenishments) {
+		this.replenishments = replenishments;
+	}
+
+	public ReplenishmentService getReplenishmentService() {
+		return replenishmentService;
+	}
+
+	public void setReplenishmentService(ReplenishmentService replenishmentService) {
+		this.replenishmentService = replenishmentService;
 	}
 
 }

@@ -61,17 +61,17 @@
 							<h:outputText value="#{animal.id}" />
 						</p:column>
 						<p:column headerText="Name of animal">
-							<h:outputText value="#{animal.animalInfo.name}" />
+							<h:outputText value="#{animal.info.name}" />
 						</p:column>
-						<p:column headerText="Name of owner">
-							<h:outputText value="#{animal.animalType.variety}" />
+						<p:column headerText="Variety">
+							<h:outputText value="#{animal.type.variety}" />
 						</p:column>
 						<p:column headerText="Vaccination">
-							<h:outputText value="#{animal.animalInfo.vaccination}" />
+							<h:outputText value="#{animal.info.vaccination}" />
 						</p:column>
 						<p:column headerText="add">
-							<h:commandButton value="Add"
-								action="customerBean.addAnimalToCustomer(animal)" />
+							<h:commandButton value="Add" icon="ui-icon-check"
+								action="#{customerBean.addAnimalToCustomer(animal)}" />
 						</p:column>
 					</p:dataTable>
 				</h:form>
@@ -90,7 +90,7 @@
 						<p:column headerText="Name of animal">
 							<h:outputText value="#{product.name}" />
 						</p:column>
-						<p:column headerText="Name of owner">
+						<p:column headerText="Name of product">
 							<h:outputText value="#{product.productDetail.name}" />
 						</p:column>
 						<p:column headerText="Add">

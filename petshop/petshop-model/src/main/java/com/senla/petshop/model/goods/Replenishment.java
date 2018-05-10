@@ -21,10 +21,6 @@ import com.senla.petshop.model.person.Admin;
 public class Replenishment extends Base {
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "animal_id")
-	private Animal animals;
-
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "products_id")
 	private Product products;
 
@@ -34,21 +30,9 @@ public class Replenishment extends Base {
 
 	@Column
 	@Temporal(TemporalType.DATE)
-	private Date start;
-
-	@Column
-	@Temporal(TemporalType.DATE)
 	private Date end;
 
 	public Replenishment() {
-	}
-
-	public Animal getAnimals() {
-		return animals;
-	}
-
-	public void setAnimals(Animal animals) {
-		this.animals = animals;
 	}
 
 	public Product getProducts() {
@@ -65,14 +49,6 @@ public class Replenishment extends Base {
 
 	public void setAdmin(Admin admin) {
 		this.admin = admin;
-	}
-
-	public Date getStart() {
-		return start;
-	}
-
-	public void setStart(Date start) {
-		this.start = start;
 	}
 
 	public Date getEnd() {

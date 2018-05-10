@@ -22,6 +22,7 @@ public class AnimalDaoImpl extends AbstractDaoImpl<Animal> implements AnimalDao 
 		super(Animal.class);
 	}
 
+	@Override
 	public List<Animal> getAnimalAndInfoAndTypeNullCustomer() {
 		CriteriaBuilder builder = getSession().getCriteriaBuilder();
 		CriteriaQuery<Animal> query = builder.createQuery(Animal.class);

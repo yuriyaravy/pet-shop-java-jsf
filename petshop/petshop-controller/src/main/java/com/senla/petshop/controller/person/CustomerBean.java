@@ -11,6 +11,7 @@ import com.senla.petshop.model.goods.Product;
 import com.senla.petshop.model.person.Customer;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -49,22 +50,24 @@ public class CustomerBean implements Serializable {
 	public void init() {
 		orders = orderService.orderWithCustomer();
 		customers = customerService.customerWithOrder();
-//		products = productService.productsWithDetails();
-		// animals = animalService.
+		products = productService.productsWithDetails();
+		animals = animalService.getAnimalAndInfoAndType();
 	}
 
 	public void addAnimalToCustomer(Animal animal) {
-		animalService.getAnimalById(animal.getId());
-		List<Animal> animals = customer.getPets();
-		animals.add(animalService.getAnimalById(animal.getId()));
-		this.customer.setPets(animals);
-		customerService.update(this.customer);
+		Customer custoFour = customerService.customerByIdWithPets(4);
+		Animal animalBD = animalService.getAnimalById(animal.getId());
+		List<Animal> animals = custoFour.getPets();
+		animals.add(animalBD);
+		custoFour.setPets(animals);
+		customerService.update(custoFour);
 	}
 
 	public void addProductToCustomerOrder(Product product) {
 		Order order = new Order();
 		order.setStatus(OrderStatus.PROCESSING);
 		order.setProduct(productService.getProductById(product.getId()));
+		order.setStart(new Date());
 		this.customer.setOrder((List<Order>) order);
 		customerService.update(this.customer);
 	}
@@ -102,6 +105,9 @@ public class CustomerBean implements Serializable {
 	}
 
 	public Customer getCustomer() {
+		if (customer == null) {
+			customer = new Customer();
+		}
 		return customer;
 	}
 
@@ -110,6 +116,9 @@ public class CustomerBean implements Serializable {
 	}
 
 	public Order getOrder() {
+		if (order == null) {
+			order = new Order();
+		}
 		return order;
 	}
 
@@ -142,6 +151,9 @@ public class CustomerBean implements Serializable {
 	}
 
 	public Product getProduct() {
+		if (product == null) {
+			product = new Product();
+		}
 		return product;
 	}
 

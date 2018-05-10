@@ -6,12 +6,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 
-import org.springframework.security.core.userdetails.UserDetailsService;
-
 import com.senla.petshop.api.service.person.PersonService;
 import com.senla.petshop.model.enums.Role;
 import com.senla.petshop.model.person.Address;
-import com.senla.petshop.model.person.Admin;
 import com.senla.petshop.model.person.Authenticator;
 import com.senla.petshop.model.person.Customer;
 import com.senla.petshop.model.person.Person;
@@ -52,11 +49,7 @@ public class RegistrationBean implements Serializable {
 
 	public Person getPerson() {
 		if (person == null) {
-			if (role == Role.ROLE_ADMIN) {
-				person = new Admin();
-			} else {
-				person = new Customer();
-			}
+			person = new Customer();
 		}
 		return person;
 	}

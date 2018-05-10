@@ -13,10 +13,13 @@
 	<a href="j_spring_security_logout"></a>
 	<h:form>
 		<p:growl id="msgs" showDetail="true" />
+<!-- 		<form action="${request.contextPath}/welcom.xhtml" > -->
+<!-- 			<input type="submit" value="Logout" /> <input type="hidden" -->
+<!-- 				name="${_csrf.parameterName}" value="${_csrf.token}" /> -->
+<!-- 		</form> -->
 		<h2 style="margin-top: 0" align="center">Admin menu page</h2>
 
 		<p:tabView cache="false">
-
 
 
 			<p:tab title="Add new product">
@@ -92,19 +95,22 @@
 
 			<p:tab title="Replenishment">
 				<p:dataTable var="replenishment"
-					value="#{replenishmentBean.replenishments}" scrollable="true"
+					value="#{animalBean.replenishments}" scrollable="true"
 					scrollHeight="50">
 					<p:column headerText="Id">
 						<h:outputText value="#{replenishment.id}" />
 					</p:column>
 					<p:column headerText="Name of product" footerText="Name of product">
-						<h:outputText value="#{replenishment.product.name}" />
+						<h:outputText value="#{replenishment.products.name}" />
 					</p:column>
 					<p:column headerText="Name of admin">
 						<h:outputText value="#{replenishment.admin.name}" />
 					</p:column>
 					<p:column headerText="Type of animal">
-						<h:outputText value="#{replenishment.animal.animalType.variety}" />
+						<h:outputText value="#{replenishment.animals.type.variety}" />
+					</p:column>
+					<p:column headerText="Date of deliver">
+						<h:outputText value="#{replenishment.end}" />
 					</p:column>
 				</p:dataTable>
 			</p:tab>
@@ -113,7 +119,7 @@
 				<h:panelGrid columns="2" cellpadding="10">
 					<p:growl id="msgs" showDetail="true" />
 					<p:dataTable id="customerDT" var="customer"
-						value="#{customerBean.customer}">
+						value="#{animalBean.customers}">
 						<p:column headerText="Id">
 							<h:outputText value="#{customer.id}" />
 						</p:column>

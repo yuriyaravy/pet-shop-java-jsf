@@ -16,10 +16,12 @@ public interface CustomerService {
 
 	void addCustomer(Customer customer);
 
-	List<Customer> getCustomer();
-
 	List<Customer> customerWithOrder();
 
 	void update(Customer customer);
+
+	List<Customer> getAllCustomer();
+
+	Customer customerByIdWithPets(Integer id);
 
 }
